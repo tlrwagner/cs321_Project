@@ -5,7 +5,7 @@ import java.util.*;
 // Record.makeRecord(e,r,p).  Record which have some fields wild are
 // created using Record.makeQuery(wild,e,r,p)
 public class GUI {
-
+    // test commit
     // public JLabel Title;
     // public JLabel Player_1;
     // public JLabel Player_2;
