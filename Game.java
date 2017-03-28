@@ -8,10 +8,19 @@ public class Game {
     public AI ai_player;
     public boolean isAi;
 
+    /**
+     * Constructor for Game object
+     * @return void
+     */
     public Game(){
         this.isAi = false;
     }
 
+    /**
+     * Constructor for Game object
+     * @param  boolean usesAI        instance variable denoting if an AI object is being used
+     * @return         void
+     */
     public Game(boolean usesAI){
         if(usesAI){
             this.isAi = true;
@@ -22,10 +31,19 @@ public class Game {
         }
     }
 
+    /**
+     * determines which player has won
+     * @return if function ran successfully
+     */
     public boolean hasWon(){
         return true;
     }
 
+    /**
+     * Saves game, writes board status to saveGame.txt as a String
+     * @param  String saveString    input String from GUI object representing the board
+     * @return        if function ran successfully
+     */
     public boolean saveGame(String saveString){
         try{
             PrintWriter writer = new PrintWriter("saveGame.txt", "UTF-8");
@@ -40,10 +58,13 @@ public class Game {
         return true;
     }
 
+    /**
+     * loads String from saveGame.txt
+     * @return if function ran successfully
+     */
     public boolean loadGame(){
         try{
             Scanner in = new Scanner(new FileReader("saveGame.txt"));
-            // System.out.println(in.nextLine());
             return true;
         }
         catch(Exception e){
@@ -52,10 +73,4 @@ public class Game {
         }
         return false;
     }
-
-    // public static void main(String[] args) {
-    //     Game g = new Game();
-    //     g.saveGame("test save");
-    //     g.loadGame();
-    // }
 }

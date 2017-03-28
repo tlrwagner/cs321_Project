@@ -7,7 +7,11 @@ public class ThreeXT_main {
     public ThreeXT_main(){
 
     }
-
+    
+    /**
+     * runs flow for game object
+     * @return if function ran successfully
+     */
     public boolean runGame(){
         return true;
     }
