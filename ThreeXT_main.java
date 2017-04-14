@@ -6,9 +6,10 @@ public class ThreeXT_main {
     public GUI gui;
 
     public ThreeXT_main(){
-
+        this.game = new Game();
+        this.gui = new GUI();
     }
-    
+
     /**
      * runs flow for game object
      * @return if function ran successfully
