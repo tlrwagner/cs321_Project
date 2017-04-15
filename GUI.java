@@ -9,7 +9,7 @@ public class GUI extends JFrame
    ImageIcon icon;
    Image image;
    private JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, b20, b21, b22, b23, b24, b25, b26, b27, exit;
-   JLabel title, playerTurn;
+   JLabel title, playerTurn, board1Complete, board2Complete, board3Complete;
    private int numTurn = 1, count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0, count6 = 0, count7 = 0, count8 = 0, count9 = 0, count10 = 0, count11 = 0, count12 = 0, count13 = 0, count14 = 0, count15 = 0, count16 = 0, count17 = 0, count18 = 0, count19 = 0, count20 = 0, count21 = 0, count22 = 0, count23 = 0, count24 = 0, count25 = 0, count26 = 0, count27 = 0;
 
 
@@ -33,7 +33,7 @@ public class GUI extends JFrame
             }
          };
           
-      panel.setLayout(new GridLayout(4,1));
+      panel.setLayout(new GridLayout(5,1));
       panel.setOpaque(false);
       panel.setPreferredSize( new Dimension(400, 400) );
       scrollPane = new JScrollPane(panel);
@@ -43,6 +43,19 @@ public class GUI extends JFrame
       title.setFont(new Font("consolas", Font.BOLD, 70));
       title.setForeground(Color.WHITE);
       panel.add(title);
+      
+      JPanel boardResults = new JPanel(new GridLayout(1,3));
+      boardResults.setOpaque(false);
+      panel.add(boardResults);
+      
+      board1Complete = new JLabel("", JLabel.CENTER);
+      boardResults.add(board1Complete);
+      
+      JLabel empty = new JLabel("");
+      boardResults.add(empty);
+      
+      board3Complete = new JLabel("", JLabel.CENTER);
+      boardResults.add(board3Complete);
       
       JPanel panel2 = new JPanel(new GridLayout(1,3));
       panel2.setOpaque(false);
@@ -105,40 +118,49 @@ public class GUI extends JFrame
       toe.setOpaque(false);
       panel2.add(toe);
       
-      b19 = new JButton("19");
+      b19 = new JButton();
       b19.setOpaque(false);
+      b19.addActionListener(new Listener19());
       toe.add(b19);
       
-      b20 = new JButton("20");
+      b20 = new JButton();
       b20.setOpaque(false);
+      b20.addActionListener(new Listener20());
       toe.add(b20);
       
-      b21 = new JButton("21");
+      b21 = new JButton();
       b21.setOpaque(false);
+      b21.addActionListener(new Listener21());
       toe.add(b21);
       
-      b22 = new JButton("22");
+      b22 = new JButton();
       b22.setOpaque(false);
+      b22.addActionListener(new Listener22());
       toe.add(b22);
       
-      b23 = new JButton("23");
+      b23 = new JButton();
       b23.setOpaque(false);
+      b23.addActionListener(new Listener23());
       toe.add(b23);
       
-      b24 = new JButton("24");
+      b24 = new JButton();
       b24.setOpaque(false);
+      b24.addActionListener(new Listener24());
       toe.add(b24);
       
-      b25 = new JButton("25");
+      b25 = new JButton();
       b25.setOpaque(false);
+      b25.addActionListener(new Listener25());
       toe.add(b25);
       
-      b26 = new JButton("26");
+      b26 = new JButton();
       b26.setOpaque(false);
+      b26.addActionListener(new Listener26());
       toe.add(b26);
       
-      b27 = new JButton("27");
+      b27 = new JButton();
       b27.setOpaque(false);
+      b27.addActionListener(new Listener27());
       toe.add(b27);
       
       JPanel DUMMIES = new JPanel(new GridLayout(1,3));
@@ -253,6 +275,23 @@ public class GUI extends JFrame
             playerTurn.setText("Player:  " + numTurn);
          }
          
+         if((count4 > 0 && count7 > 0) || (count5 > 0 && count9 > 0) || (count2 > 0 && count3 > 0))
+         {
+            b1.setEnabled(false);
+            b2.setEnabled(false);
+            b3.setEnabled(false);
+            b4.setEnabled(false);
+            b5.setEnabled(false);
+            b6.setEnabled(false);
+            b7.setEnabled(false);
+            b8.setEnabled(false);
+            b9.setEnabled(false);
+            board1Complete.setText("X");
+            board1Complete.setFont(new Font("consolas", Font.BOLD, 50));
+            board1Complete.setForeground(Color.WHITE);
+            
+         }
+         
       }
       
    }
@@ -274,6 +313,22 @@ public class GUI extends JFrame
                numTurn = numTurn - 1;
          
             playerTurn.setText("Player:  " + numTurn);
+         }
+         
+         if((count1>0 && count3>0) || (count5>0 && count8>0))
+         {
+            b1.setEnabled(false);
+            b2.setEnabled(false);
+            b3.setEnabled(false);
+            b4.setEnabled(false);
+            b5.setEnabled(false);
+            b6.setEnabled(false);
+            b7.setEnabled(false);
+            b8.setEnabled(false);
+            b9.setEnabled(false);
+            board1Complete.setText("X");
+            board1Complete.setFont(new Font("consolas", Font.BOLD, 50));
+            board1Complete.setForeground(Color.WHITE);
          }
          
       }
@@ -299,6 +354,22 @@ public class GUI extends JFrame
             playerTurn.setText("Player:  " + numTurn);
          }
          
+         if((count1>0 && count2>0) || (count6>0 && count9>0) || (count7>0 && count5>0))
+         {
+            b1.setEnabled(false);
+            b2.setEnabled(false);
+            b3.setEnabled(false);
+            b4.setEnabled(false);
+            b5.setEnabled(false);
+            b6.setEnabled(false);
+            b7.setEnabled(false);
+            b8.setEnabled(false);
+            b9.setEnabled(false);
+            board1Complete.setText("X");
+            board1Complete.setFont(new Font("consolas", Font.BOLD, 50));
+            board1Complete.setForeground(Color.WHITE);
+         }
+         
       }
       
    }
@@ -320,6 +391,22 @@ public class GUI extends JFrame
                numTurn = numTurn - 1;
          
             playerTurn.setText("Player:  " + numTurn);
+         }
+         
+         if((count1>0 && count7>0) || (count5>0 && count6>0))
+         {
+            b1.setEnabled(false);
+            b2.setEnabled(false);
+            b3.setEnabled(false);
+            b4.setEnabled(false);
+            b5.setEnabled(false);
+            b6.setEnabled(false);
+            b7.setEnabled(false);
+            b8.setEnabled(false);
+            b9.setEnabled(false);
+            board1Complete.setText("X");
+            board1Complete.setFont(new Font("consolas", Font.BOLD, 50));
+            board1Complete.setForeground(Color.WHITE);
          }
          
       }
@@ -345,6 +432,22 @@ public class GUI extends JFrame
             playerTurn.setText("Player:  " + numTurn);
          }
          
+         if((count1>0 && count9>0) || (count2>0 && count8>0) || (count3>0 && count7>0) || (count4>0 && count6>0))
+         {
+            b1.setEnabled(false);
+            b2.setEnabled(false);
+            b3.setEnabled(false);
+            b4.setEnabled(false);
+            b5.setEnabled(false);
+            b6.setEnabled(false);
+            b7.setEnabled(false);
+            b8.setEnabled(false);
+            b9.setEnabled(false);
+            board1Complete.setText("X");
+            board1Complete.setFont(new Font("consolas", Font.BOLD, 50));
+            board1Complete.setForeground(Color.WHITE);
+         }
+         
       }
       
    }
@@ -366,6 +469,22 @@ public class GUI extends JFrame
                numTurn = numTurn - 1;
          
             playerTurn.setText("Player:  " + numTurn);
+         }
+         
+         if((count3>0 && count9>0) || (count4>0 && count5>0))
+         {
+            b1.setEnabled(false);
+            b2.setEnabled(false);
+            b3.setEnabled(false);
+            b4.setEnabled(false);
+            b5.setEnabled(false);
+            b6.setEnabled(false);
+            b7.setEnabled(false);
+            b8.setEnabled(false);
+            b9.setEnabled(false);
+            board1Complete.setText("X");
+            board1Complete.setFont(new Font("consolas", Font.BOLD, 50));
+            board1Complete.setForeground(Color.WHITE);
          }
          
       }
@@ -391,6 +510,22 @@ public class GUI extends JFrame
             playerTurn.setText("Player:  " + numTurn);
          }
          
+         if((count1>0 && count4>0) || (count5>0 && count3>0) || (count8>0 && count9>0))
+         {
+            b1.setEnabled(false);
+            b2.setEnabled(false);
+            b3.setEnabled(false);
+            b4.setEnabled(false);
+            b5.setEnabled(false);
+            b6.setEnabled(false);
+            b7.setEnabled(false);
+            b8.setEnabled(false);
+            b9.setEnabled(false);
+            board1Complete.setText("X");
+            board1Complete.setFont(new Font("consolas", Font.BOLD, 50));
+            board1Complete.setForeground(Color.WHITE);
+         }
+         
       }
       
    }
@@ -414,6 +549,22 @@ public class GUI extends JFrame
             playerTurn.setText("Player:  " + numTurn);
          }
          
+         if((count7>0 && count9>0) || (count2>0 && count5>0))
+         {
+            b1.setEnabled(false);
+            b2.setEnabled(false);
+            b3.setEnabled(false);
+            b4.setEnabled(false);
+            b5.setEnabled(false);
+            b6.setEnabled(false);
+            b7.setEnabled(false);
+            b8.setEnabled(false);
+            b9.setEnabled(false);
+            board1Complete.setText("X");
+            board1Complete.setFont(new Font("consolas", Font.BOLD, 50));
+            board1Complete.setForeground(Color.WHITE);
+         }
+         
       }
       
    }
@@ -435,6 +586,374 @@ public class GUI extends JFrame
                numTurn = numTurn - 1;
          
             playerTurn.setText("Player:  " + numTurn);
+         }
+         
+         if((count3>0 && count6>0) || (count1>0 && count5>0) || (count7>0 && count8>0))
+         {
+            b1.setEnabled(false);
+            b2.setEnabled(false);
+            b3.setEnabled(false);
+            b4.setEnabled(false);
+            b5.setEnabled(false);
+            b6.setEnabled(false);
+            b7.setEnabled(false);
+            b8.setEnabled(false);
+            b9.setEnabled(false);
+            board1Complete.setText("X");
+            board1Complete.setFont(new Font("consolas", Font.BOLD, 50));
+            board1Complete.setForeground(Color.WHITE);
+         }
+         
+      }
+      
+   }
+      
+   private class Listener19 implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+         b19.setText("X");
+         b19.setFont(new Font("consolas", Font.BOLD, 30));
+         b19.setForeground(Color.BLACK);
+         count19++;
+         
+         if(count19 == 1)
+         {
+            if(numTurn == 1)
+               numTurn = numTurn + 1;
+            else
+               numTurn = numTurn - 1;
+         
+            playerTurn.setText("Player:  " + numTurn);
+         }
+         
+         if((count22 > 0 && count25 > 0) || (count20 > 0 && count21 > 0) || (count23 > 0 && count27 > 0))
+         {
+            b19.setEnabled(false);
+            b20.setEnabled(false);
+            b21.setEnabled(false);
+            b22.setEnabled(false);
+            b23.setEnabled(false);
+            b24.setEnabled(false);
+            b25.setEnabled(false);
+            b26.setEnabled(false);
+            b27.setEnabled(false);
+            board3Complete.setText("X");
+            board3Complete.setFont(new Font("consolas", Font.BOLD, 50));
+            board3Complete.setForeground(Color.WHITE);
+            
+         }
+         
+      }
+      
+   }
+   
+   private class Listener20 implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+         b20.setText("X");
+         b20.setFont(new Font("consolas", Font.BOLD, 30));
+         b20.setForeground(Color.BLACK);
+         count20++;
+         
+         if(count20 == 1)
+         {
+            if(numTurn == 1)
+               numTurn = numTurn + 1;
+            else
+               numTurn = numTurn - 1;
+         
+            playerTurn.setText("Player:  " + numTurn);
+         }
+         
+         if((count19>0 && count21>0) || (count23>0 && count26>0))
+         {
+            b19.setEnabled(false);
+            b20.setEnabled(false);
+            b21.setEnabled(false);
+            b22.setEnabled(false);
+            b23.setEnabled(false);
+            b24.setEnabled(false);
+            b25.setEnabled(false);
+            b26.setEnabled(false);
+            b27.setEnabled(false);
+            board3Complete.setText("X");
+            board3Complete.setFont(new Font("consolas", Font.BOLD, 50));
+            board3Complete.setForeground(Color.WHITE);            
+         }
+         
+      }
+      
+   }
+   
+   private class Listener21 implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+         b21.setText("X");
+         b21.setFont(new Font("consolas", Font.BOLD, 30));
+         b21.setForeground(Color.BLACK);
+         count21++;
+         
+         if(count21 == 1)
+         {
+            if(numTurn == 1)
+               numTurn = numTurn + 1;
+            else
+               numTurn = numTurn - 1;
+         
+            playerTurn.setText("Player:  " + numTurn);
+         }
+         
+         if((count19>0 && count20>0) || (count23>0 && count25>0) || (count24>0 && count27>0))
+         {
+            b19.setEnabled(false);
+            b20.setEnabled(false);
+            b21.setEnabled(false);
+            b22.setEnabled(false);
+            b23.setEnabled(false);
+            b24.setEnabled(false);
+            b25.setEnabled(false);
+            b26.setEnabled(false);
+            b27.setEnabled(false);
+            board3Complete.setText("X");
+            board3Complete.setFont(new Font("consolas", Font.BOLD, 50));
+            board3Complete.setForeground(Color.WHITE);
+         }
+         
+      }
+      
+   }
+   
+   private class Listener22 implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+         b22.setText("X");
+         b22.setFont(new Font("consolas", Font.BOLD, 30));
+         b22.setForeground(Color.BLACK);
+         count22++;
+         
+         if(count22 == 1)
+         {
+            if(numTurn == 1)
+               numTurn = numTurn + 1;
+            else
+               numTurn = numTurn - 1;
+         
+            playerTurn.setText("Player:  " + numTurn);
+         }
+         
+         if((count19>0 && count25>0) || (count23>0 && count24>0))
+         {
+            b19.setEnabled(false);
+            b20.setEnabled(false);
+            b21.setEnabled(false);
+            b22.setEnabled(false);
+            b23.setEnabled(false);
+            b24.setEnabled(false);
+            b25.setEnabled(false);
+            b26.setEnabled(false);
+            b27.setEnabled(false);
+            board3Complete.setText("X");
+            board3Complete.setFont(new Font("consolas", Font.BOLD, 50));
+            board3Complete.setForeground(Color.WHITE);
+         }
+         
+      }
+      
+   }
+   
+   private class Listener23 implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+         b23.setText("X");
+         b23.setFont(new Font("consolas", Font.BOLD, 30));
+         b23.setForeground(Color.BLACK);
+         count23++;
+         
+         if(count23 == 1)
+         {
+            if(numTurn == 1)
+               numTurn = numTurn + 1;
+            else
+               numTurn = numTurn - 1;
+         
+            playerTurn.setText("Player:  " + numTurn);
+         }
+         
+         if((count19>0 && count27>0) || (count20>0 && count26>0) || (count21>0 && count25>0) || (count22>0 && count24>0))
+         {
+            b19.setEnabled(false);
+            b20.setEnabled(false);
+            b21.setEnabled(false);
+            b22.setEnabled(false);
+            b23.setEnabled(false);
+            b24.setEnabled(false);
+            b25.setEnabled(false);
+            b26.setEnabled(false);
+            b27.setEnabled(false);
+            board3Complete.setText("X");
+            board3Complete.setFont(new Font("consolas", Font.BOLD, 50));
+            board3Complete.setForeground(Color.WHITE);
+         }
+         
+      }
+      
+   }
+   
+   private class Listener24 implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+         b24.setText("X");
+         b24.setFont(new Font("consolas", Font.BOLD, 30));
+         b24.setForeground(Color.BLACK);
+         count24++;
+         
+         if(count24 == 1)
+         {
+            if(numTurn == 1)
+               numTurn = numTurn + 1;
+            else
+               numTurn = numTurn - 1;
+         
+            playerTurn.setText("Player:  " + numTurn);
+         }
+         
+         if((count21>0 && count27>0) || (count22>0 && count23>0))
+         {
+            b19.setEnabled(false);
+            b20.setEnabled(false);
+            b21.setEnabled(false);
+            b22.setEnabled(false);
+            b23.setEnabled(false);
+            b24.setEnabled(false);
+            b25.setEnabled(false);
+            b26.setEnabled(false);
+            b27.setEnabled(false);
+            board3Complete.setText("X");
+            board3Complete.setFont(new Font("consolas", Font.BOLD, 50));
+            board3Complete.setForeground(Color.WHITE);
+         }
+         
+      }
+      
+   }
+   
+   private class Listener25 implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+         b25.setText("X");
+         b25.setFont(new Font("consolas", Font.BOLD, 30));
+         b25.setForeground(Color.BLACK);
+         count25++;
+         
+         if(count25 == 1)
+         {
+            if(numTurn == 1)
+               numTurn = numTurn + 1;
+            else
+               numTurn = numTurn - 1;
+         
+            playerTurn.setText("Player:  " + numTurn);
+         }
+         
+         if((count19>0 && count22>0) || (count23>0 && count21>0) || (count26>0 && count27>0))
+         {
+            b19.setEnabled(false);
+            b20.setEnabled(false);
+            b21.setEnabled(false);
+            b22.setEnabled(false);
+            b23.setEnabled(false);
+            b24.setEnabled(false);
+            b25.setEnabled(false);
+            b26.setEnabled(false);
+            b27.setEnabled(false);
+            board3Complete.setText("X");
+            board3Complete.setFont(new Font("consolas", Font.BOLD, 50));
+            board3Complete.setForeground(Color.WHITE);
+         }
+         
+      }
+      
+   }
+   
+   private class Listener26 implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+         b26.setText("X");
+         b26.setFont(new Font("consolas", Font.BOLD, 30));
+         b26.setForeground(Color.BLACK);
+         count26++;
+         
+         if(count26 == 1)
+         {
+            if(numTurn == 1)
+               numTurn = numTurn + 1;
+            else
+               numTurn = numTurn - 1;
+         
+            playerTurn.setText("Player:  " + numTurn);
+         }
+         
+         if((count25>0 && count27>0) || (count20>0 && count23>0))
+         {
+            b19.setEnabled(false);
+            b20.setEnabled(false);
+            b21.setEnabled(false);
+            b22.setEnabled(false);
+            b23.setEnabled(false);
+            b24.setEnabled(false);
+            b25.setEnabled(false);
+            b26.setEnabled(false);
+            b27.setEnabled(false);
+            board3Complete.setText("X");
+            board3Complete.setFont(new Font("consolas", Font.BOLD, 50));
+            board3Complete.setForeground(Color.WHITE);
+         }
+         
+      }
+      
+   }
+   
+   private class Listener27 implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+         b27.setText("X");
+         b27.setFont(new Font("consolas", Font.BOLD, 30));
+         b27.setForeground(Color.BLACK);
+         count27++;
+         
+         if(count27 == 1)
+         {
+            if(numTurn == 1)
+               numTurn = numTurn + 1;
+            else
+               numTurn = numTurn - 1;
+         
+            playerTurn.setText("Player:  " + numTurn);
+         }
+         
+         if((count25>0 && count26>0) || (count19>0 && count23>0) || (count21>0 && count24>0))
+         {
+            b19.setEnabled(false);
+            b20.setEnabled(false);
+            b21.setEnabled(false);
+            b22.setEnabled(false);
+            b23.setEnabled(false);
+            b24.setEnabled(false);
+            b25.setEnabled(false);
+            b26.setEnabled(false);
+            b27.setEnabled(false);
+            board3Complete.setText("X");
+            board3Complete.setFont(new Font("consolas", Font.BOLD, 50));
+            board3Complete.setForeground(Color.WHITE);
          }
          
       }
