@@ -10,8 +10,10 @@ public class GUI extends JFrame
    Image image;
    private JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, b20, b21, b22, b23, b24, b25, b26, b27, exit;
    JLabel title, playerTurn, board1Complete, board2Complete, board3Complete;
-   private int numTurn = 1, count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0, count6 = 0, count7 = 0, count8 = 0, count9 = 0, count10 = 0, count11 = 0, count12 = 0, count13 = 0, count14 = 0, count15 = 0, count16 = 0, count17 = 0, count18 = 0, count19 = 0, count20 = 0, count21 = 0, count22 = 0, count23 = 0, count24 = 0, count25 = 0, count26 = 0, count27 = 0;
-
+   private int numTurn = 1, count_win = 0, count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0, count6 = 0, count7 = 0, count8 = 0, count9 = 0, count10 = 0, count11 = 0, count12 = 0, count13 = 0, count14 = 0, count15 = 0, count16 = 0, count17 = 0, count18 = 0, count19 = 0, count20 = 0, count21 = 0, count22 = 0, count23 = 0, count24 = 0, count25 = 0, count26 = 0, count27 = 0;
+   JFrame frame2;
+   
+   private int [] buttonsPressed = new int [27];
 
    public GUI()
    {
@@ -298,6 +300,13 @@ public class GUI extends JFrame
             board1Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board1Complete.setForeground(Color.WHITE);
             
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
+            
          }
          
       }
@@ -337,6 +346,13 @@ public class GUI extends JFrame
             board1Complete.setText("X");
             board1Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board1Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -376,6 +392,13 @@ public class GUI extends JFrame
             board1Complete.setText("X");
             board1Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board1Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -415,6 +438,13 @@ public class GUI extends JFrame
             board1Complete.setText("X");
             board1Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board1Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -454,6 +484,13 @@ public class GUI extends JFrame
             board1Complete.setText("X");
             board1Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board1Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -493,6 +530,13 @@ public class GUI extends JFrame
             board1Complete.setText("X");
             board1Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board1Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -532,6 +576,13 @@ public class GUI extends JFrame
             board1Complete.setText("X");
             board1Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board1Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -571,6 +622,13 @@ public class GUI extends JFrame
             board1Complete.setText("X");
             board1Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board1Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -610,6 +668,13 @@ public class GUI extends JFrame
             board1Complete.setText("X");
             board1Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board1Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -650,6 +715,13 @@ public class GUI extends JFrame
             board3Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board3Complete.setForeground(Color.WHITE);
             
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
+            
          }
          
       }
@@ -688,7 +760,14 @@ public class GUI extends JFrame
             b27.setEnabled(false);
             board3Complete.setText("X");
             board3Complete.setFont(new Font("consolas", Font.BOLD, 50));
-            board3Complete.setForeground(Color.WHITE);            
+            board3Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }       
          }
          
       }
@@ -728,6 +807,13 @@ public class GUI extends JFrame
             board3Complete.setText("X");
             board3Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board3Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -767,6 +853,13 @@ public class GUI extends JFrame
             board3Complete.setText("X");
             board3Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board3Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -806,6 +899,13 @@ public class GUI extends JFrame
             board3Complete.setText("X");
             board3Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board3Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -845,6 +945,13 @@ public class GUI extends JFrame
             board3Complete.setText("X");
             board3Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board3Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -884,6 +991,13 @@ public class GUI extends JFrame
             board3Complete.setText("X");
             board3Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board3Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -923,6 +1037,13 @@ public class GUI extends JFrame
             board3Complete.setText("X");
             board3Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board3Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -962,6 +1083,13 @@ public class GUI extends JFrame
             board3Complete.setText("X");
             board3Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board3Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -1002,6 +1130,13 @@ public class GUI extends JFrame
             board2Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board2Complete.setForeground(Color.WHITE);
             
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
+            
          }
          
       }
@@ -1041,6 +1176,13 @@ public class GUI extends JFrame
             board2Complete.setText("X");
             board2Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board2Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -1080,6 +1222,13 @@ public class GUI extends JFrame
             board2Complete.setText("X");
             board2Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board2Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -1119,6 +1268,13 @@ public class GUI extends JFrame
             board2Complete.setText("X");
             board2Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board2Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -1158,6 +1314,13 @@ public class GUI extends JFrame
             board2Complete.setText("X");
             board2Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board2Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -1197,6 +1360,13 @@ public class GUI extends JFrame
             board2Complete.setText("X");
             board2Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board2Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -1236,6 +1406,13 @@ public class GUI extends JFrame
             board2Complete.setText("X");
             board2Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board2Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -1275,6 +1452,13 @@ public class GUI extends JFrame
             board2Complete.setText("X");
             board2Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board2Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
@@ -1314,6 +1498,13 @@ public class GUI extends JFrame
             board2Complete.setText("X");
             board2Complete.setFont(new Font("consolas", Font.BOLD, 50));
             board2Complete.setForeground(Color.WHITE);
+            
+            count_win++;
+            
+            if(count_win==3)
+            {
+               JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
+            }
          }
          
       }
