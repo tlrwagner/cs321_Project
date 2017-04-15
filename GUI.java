@@ -13,7 +13,7 @@ public class GUI extends JFrame
    private int numTurn = 1, count_win = 0, count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0, count6 = 0, count7 = 0, count8 = 0, count9 = 0, count10 = 0, count11 = 0, count12 = 0, count13 = 0, count14 = 0, count15 = 0, count16 = 0, count17 = 0, count18 = 0, count19 = 0, count20 = 0, count21 = 0, count22 = 0, count23 = 0, count24 = 0, count25 = 0, count26 = 0, count27 = 0;
    JFrame frame2;
    
-   private int [] buttonsPressed = new int [27];
+   private boolean [] buttonsPressed = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
 
    public GUI()
    {
@@ -244,18 +244,6 @@ public class GUI extends JFrame
       panelExit.add(exit);
    
    }
-
-   /*public String getBoard(){
-      return "";
-   }
-
-   public boolean hasWon(){
-      return true;
-   }
-
-   public boolean createBoard(){
-      return true;
-   }*/
    
    private class exit_Listener implements ActionListener
    {
@@ -274,6 +262,8 @@ public class GUI extends JFrame
          b1.setFont(new Font("consolas", Font.BOLD, 30));
          b1.setForeground(Color.BLACK);
          count1++;
+         
+         buttonsPressed[0] = true;
          
          if(count1 == 1)
          {
@@ -322,6 +312,8 @@ public class GUI extends JFrame
          b2.setForeground(Color.BLACK);
          count2++;
          
+         buttonsPressed[1] = true;
+         
          if(count2 == 1)
          {
             if(numTurn == 1)
@@ -367,6 +359,8 @@ public class GUI extends JFrame
          b3.setFont(new Font("consolas", Font.BOLD, 30));
          b3.setForeground(Color.BLACK);
          count3++;
+         
+         buttonsPressed[2] = true;
          
          if(count3 == 1)
          {
@@ -414,6 +408,8 @@ public class GUI extends JFrame
          b4.setForeground(Color.BLACK);
          count4++;
          
+         buttonsPressed[3] = true;
+         
          if(count4 == 1)
          {
             if(numTurn == 1)
@@ -459,6 +455,8 @@ public class GUI extends JFrame
          b5.setFont(new Font("consolas", Font.BOLD, 30));
          b5.setForeground(Color.BLACK);
          count5++;
+         
+         buttonsPressed[4] = true;
          
          if(count5 == 1)
          {
@@ -506,6 +504,8 @@ public class GUI extends JFrame
          b6.setForeground(Color.BLACK);
          count6++;
          
+         buttonsPressed[5] = true;
+         
          if(count6 == 1)
          {
             if(numTurn == 1)
@@ -551,6 +551,8 @@ public class GUI extends JFrame
          b7.setFont(new Font("consolas", Font.BOLD, 30));
          b7.setForeground(Color.BLACK);
          count7++;
+         
+         buttonsPressed[6] = true;
          
          if(count7 == 1)
          {
@@ -598,6 +600,8 @@ public class GUI extends JFrame
          b8.setForeground(Color.BLACK);
          count8++;
          
+         buttonsPressed[7] = true;
+         
          if(count8 == 1)
          {
             if(numTurn == 1)
@@ -644,6 +648,8 @@ public class GUI extends JFrame
          b9.setForeground(Color.BLACK);
          count9++;
          
+         buttonsPressed[8] = true;
+         
          if(count9 == 1)
          {
             if(numTurn == 1)
@@ -689,6 +695,8 @@ public class GUI extends JFrame
          b19.setFont(new Font("consolas", Font.BOLD, 30));
          b19.setForeground(Color.BLACK);
          count19++;
+         
+         buttonsPressed[18] = true;
          
          if(count19 == 1)
          {
@@ -737,6 +745,8 @@ public class GUI extends JFrame
          b20.setForeground(Color.BLACK);
          count20++;
          
+         buttonsPressed[19] = true;
+         
          if(count20 == 1)
          {
             if(numTurn == 1)
@@ -782,6 +792,8 @@ public class GUI extends JFrame
          b21.setFont(new Font("consolas", Font.BOLD, 30));
          b21.setForeground(Color.BLACK);
          count21++;
+         
+         buttonsPressed[20] = true;
          
          if(count21 == 1)
          {
@@ -829,6 +841,8 @@ public class GUI extends JFrame
          b22.setForeground(Color.BLACK);
          count22++;
          
+         buttonsPressed[21] = true;
+         
          if(count22 == 1)
          {
             if(numTurn == 1)
@@ -874,6 +888,8 @@ public class GUI extends JFrame
          b23.setFont(new Font("consolas", Font.BOLD, 30));
          b23.setForeground(Color.BLACK);
          count23++;
+         
+         buttonsPressed[22] = true;
          
          if(count23 == 1)
          {
@@ -921,6 +937,8 @@ public class GUI extends JFrame
          b24.setForeground(Color.BLACK);
          count24++;
          
+         buttonsPressed[23] = true;
+         
          if(count24 == 1)
          {
             if(numTurn == 1)
@@ -966,6 +984,8 @@ public class GUI extends JFrame
          b25.setFont(new Font("consolas", Font.BOLD, 30));
          b25.setForeground(Color.BLACK);
          count25++;
+         
+         buttonsPressed[24] = true;
          
          if(count25 == 1)
          {
@@ -1013,6 +1033,8 @@ public class GUI extends JFrame
          b26.setForeground(Color.BLACK);
          count26++;
          
+         buttonsPressed[25] = true;
+         
          if(count26 == 1)
          {
             if(numTurn == 1)
@@ -1059,6 +1081,8 @@ public class GUI extends JFrame
          b27.setForeground(Color.BLACK);
          count27++;
          
+         buttonsPressed[26] = true;
+         
          if(count27 == 1)
          {
             if(numTurn == 1)
@@ -1104,6 +1128,8 @@ public class GUI extends JFrame
          b10.setFont(new Font("consolas", Font.BOLD, 30));
          b10.setForeground(Color.BLACK);
          count10++;
+         
+         buttonsPressed[9] = true;
          
          if(count10 == 1)
          {
@@ -1152,6 +1178,8 @@ public class GUI extends JFrame
          b11.setForeground(Color.BLACK);
          count11++;
          
+         buttonsPressed[10] = true;
+         
          if(count11 == 1)
          {
             if(numTurn == 1)
@@ -1197,6 +1225,8 @@ public class GUI extends JFrame
          b12.setFont(new Font("consolas", Font.BOLD, 30));
          b12.setForeground(Color.BLACK);
          count12++;
+         
+         buttonsPressed[11] = true;
          
          if(count12 == 1)
          {
@@ -1244,6 +1274,8 @@ public class GUI extends JFrame
          b13.setForeground(Color.BLACK);
          count13++;
          
+         buttonsPressed[12] = true;
+         
          if(count13 == 1)
          {
             if(numTurn == 1)
@@ -1289,6 +1321,8 @@ public class GUI extends JFrame
          b14.setFont(new Font("consolas", Font.BOLD, 30));
          b14.setForeground(Color.BLACK);
          count14++;
+         
+         buttonsPressed[13] = true;
          
          if(count14 == 1)
          {
@@ -1336,6 +1370,8 @@ public class GUI extends JFrame
          b15.setForeground(Color.BLACK);
          count15++;
          
+         buttonsPressed[14] = true;
+         
          if(count15 == 1)
          {
             if(numTurn == 1)
@@ -1381,6 +1417,8 @@ public class GUI extends JFrame
          b16.setFont(new Font("consolas", Font.BOLD, 30));
          b16.setForeground(Color.BLACK);
          count16++;
+         
+         buttonsPressed[15] = true;
          
          if(count16 == 1)
          {
@@ -1428,6 +1466,8 @@ public class GUI extends JFrame
          b17.setForeground(Color.BLACK);
          count17++;
          
+         buttonsPressed[16] = true;
+         
          if(count17 == 1)
          {
             if(numTurn == 1)
@@ -1473,6 +1513,8 @@ public class GUI extends JFrame
          b18.setFont(new Font("consolas", Font.BOLD, 30));
          b18.setForeground(Color.BLACK);
          count18++;
+         
+         buttonsPressed[17] = true;
          
          if(count18 == 1)
          {
