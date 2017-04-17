@@ -31,6 +31,11 @@ public Game(boolean usesAI){
         }
 }
 
+public void makeAI(){
+    this.isAi = true;
+    this.ai_player = new AI(0);
+}
+
 /**
  * if a player has won
  * @return if function ran successfully
