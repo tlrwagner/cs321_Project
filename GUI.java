@@ -1,6 +1,9 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.PrintWriter;
+import java.io.FileReader;
+import java.util.*;
 
 public class GUI extends JFrame
 {
@@ -8,21 +11,152 @@ public class GUI extends JFrame
    JScrollPane scrollPane;
    ImageIcon icon;
    Image image;
-   private JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, b20, b21, b22, b23, b24, b25, b26, b27, exit;
+   private JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, b20, b21, b22, b23, b24, b25, b26, b27, exit, AI, save, load;
    JLabel title, playerTurn, board1Complete, board2Complete, board3Complete;
    private int numTurn = 1, count_win = 0, count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0, count6 = 0, count7 = 0, count8 = 0, count9 = 0, count10 = 0, count11 = 0, count12 = 0, count13 = 0, count14 = 0, count15 = 0, count16 = 0, count17 = 0, count18 = 0, count19 = 0, count20 = 0, count21 = 0, count22 = 0, count23 = 0, count24 = 0, count25 = 0, count26 = 0, count27 = 0;
    JFrame frame2;
 
-   private boolean [] buttonsPressed = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
+   public boolean [] buttonsPressed = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
+
+
+   public AI ai_player;
+   public boolean hasAI = false;
+   public int aiDifficulty = 0;
+   public int[] buttonsPressedToInt(){
+       int[] result = new int[27];
+       int i = 0;
+       for(boolean item : this.buttonsPressed){
+           if(item){
+               result[i] = 1;
+           }
+           else{
+               result[i] = 0;
+           }
+           i++;
+       }
+       return result;
+   }
+   public int getAiMove(){
+       if(this.ai_player.difficulty == 0){
+           return this.ai_player.moveEasy(this.buttonsPressedToInt());
+       }
+       else{
+           return this.ai_player.moveHard(this.buttonsPressedToInt());
+       }
+
+   }
+   public void aiPressButton(){
+       int move = getAiMove();
+       switch (move){
+           case 0: b1.doClick(); break;
+           case 1: b2.doClick();break;
+           case 2: b3.doClick();break;
+           case 3: b4.doClick();break;
+           case 4: b5.doClick();break;
+           case 5: b6.doClick();break;
+           case 6: b7.doClick();break;
+           case 7: b8.doClick();break;
+           case 8: b9.doClick();break;
+           case 9: b10.doClick();break;
+           case 10: b11.doClick();break;
+           case 11: b12.doClick();break;
+           case 12: b13.doClick();break;
+           case 13: b14.doClick();break;
+           case 14: b15.doClick();break;
+           case 15: b16.doClick();break;
+           case 16: b17.doClick();break;
+           case 17: b18.doClick();break;
+           case 18: b19.doClick();break;
+           case 19: b20.doClick();break;
+           case 20: b21.doClick();break;
+           case 21: b22.doClick();break;
+           case 22: b23.doClick();break;
+           case 23: b24.doClick();break;
+           case 24: b25.doClick();break;
+           case 25: b26.doClick();break;
+           case 26: b27.doClick();break;
+           default:
+               break;
+
+       }
+   }
+   public void pressButton(int buttonToPress){
+       switch (buttonToPress){
+           case 0: b1.doClick(); break;
+           case 1: b2.doClick();break;
+           case 2: b3.doClick();break;
+           case 3: b4.doClick();break;
+           case 4: b5.doClick();break;
+           case 5: b6.doClick();break;
+           case 6: b7.doClick();break;
+           case 7: b8.doClick();break;
+           case 8: b9.doClick();break;
+           case 9: b10.doClick();break;
+           case 10: b11.doClick();break;
+           case 11: b12.doClick();break;
+           case 12: b13.doClick();break;
+           case 13: b14.doClick();break;
+           case 14: b15.doClick();break;
+           case 15: b16.doClick();break;
+           case 16: b17.doClick();break;
+           case 17: b18.doClick();break;
+           case 18: b19.doClick();break;
+           case 19: b20.doClick();break;
+           case 20: b21.doClick();break;
+           case 21: b22.doClick();break;
+           case 22: b23.doClick();break;
+           case 23: b24.doClick();break;
+           case 24: b25.doClick();break;
+           case 25: b26.doClick();break;
+           case 26: b27.doClick();break;
+           default:
+               break;
+
+       }
+   }
+   public boolean saveGame(boolean[] saveArray){
+           String saveString = "";
+           for(boolean item : saveArray) {
+                   saveString += String.valueOf(item) + " ";
+           }
+           try{
+                   PrintWriter writer = new PrintWriter("saveGame.txt", "UTF-8");
+                   writer.println(saveString);
+                   writer.close();
+                   return true;
+           }
+           catch (Exception e) {
+                   System.out.println("There was an error saving the game.");
+                   System.out.println(e);
+           }
+           return false;
+   }
+   public boolean loadGame(){
+           String[] result = new String[26];
+           try{
+                   Scanner in = new Scanner(new FileReader("saveGame.txt"));
+                   int i = 0;
+                   while(in.hasNext()) {
+                           // result.append(in.next());
+                           if(Boolean.parseBoolean(in.next())){
+                               pressButton(i);
+                           }
+                           i++;
+                   }
+                   return true;
+           }
+           catch(Exception e) {
+                   System.out.println("There was an error loading the game save.");
+                   System.out.println(e);
+           }
+           return false;
+   }
 
    public GUI()
    {
       icon = new ImageIcon("bckgrnd.jpg");
+      this.ai_player = new AI(0);
 
-    //   public int[] buttonsPressedToInt(){
-    //       int[] result = {0};
-    //       return result;
-    //   }
 
 
       JPanel panel =
@@ -249,6 +383,54 @@ public class GUI extends JFrame
       exit.addActionListener(new exit_Listener());
       panelExit.add(exit);
 
+      JPanel panelAI = new JPanel(new GridLayout(3,1));
+      panelAI.setOpaque(false);
+      panel3.add(panelAI, BorderLayout.EAST);
+
+      AI = new JButton("AI off");
+      AI.setOpaque(false);
+      AI.addActionListener(new AIToggle_Listener());
+      panelAI.add(AI);
+      save = new JButton("Save Game");
+      save.setOpaque(false);
+      save.addActionListener(new Save_Listener());
+      panelAI.add(save);
+      load = new JButton("Load Game");
+      load.setOpaque(false);
+      load.addActionListener(new Load_Listener());
+      panelAI.add(load);
+   }
+
+   private class AIToggle_Listener implements ActionListener{
+       public void actionPerformed(ActionEvent e){
+           if(hasAI && ai_player.difficulty == 1){
+               hasAI = !hasAI;
+               AI.setText("AI off");
+           }
+           else if(hasAI && ai_player.difficulty == 0){
+               ai_player.difficulty = 1;
+               AI.setText("AI Hard");
+           }
+           else{
+               hasAI = !hasAI;
+               ai_player.difficulty = 0;
+               AI.setText("AI Easy");
+           }
+
+       }
+   }
+   private class Save_Listener implements ActionListener{
+       public void actionPerformed(ActionEvent e){
+           saveGame(buttonsPressed);
+           JOptionPane.showMessageDialog(frame2,"Game Saved");
+
+       }
+   }private class Load_Listener implements ActionListener{
+       public void actionPerformed(ActionEvent e){
+           loadGame();
+           JOptionPane.showMessageDialog(frame2,"Game Loaded");
+
+       }
    }
 
    private class exit_Listener implements ActionListener
@@ -269,7 +451,10 @@ public class GUI extends JFrame
          b1.setForeground(Color.BLACK);
          count1++;
 
+
          buttonsPressed[0] = true;
+
+
 
          if(count1 == 1)
          {
@@ -304,7 +489,9 @@ public class GUI extends JFrame
             }
 
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -352,7 +539,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -365,6 +554,7 @@ public class GUI extends JFrame
          b3.setFont(new Font("consolas", Font.BOLD, 30));
          b3.setForeground(Color.BLACK);
          count3++;
+
 
          buttonsPressed[2] = true;
 
@@ -400,7 +590,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -413,6 +605,7 @@ public class GUI extends JFrame
          b4.setFont(new Font("consolas", Font.BOLD, 30));
          b4.setForeground(Color.BLACK);
          count4++;
+
 
          buttonsPressed[3] = true;
 
@@ -448,7 +641,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -461,6 +656,7 @@ public class GUI extends JFrame
          b5.setFont(new Font("consolas", Font.BOLD, 30));
          b5.setForeground(Color.BLACK);
          count5++;
+
 
          buttonsPressed[4] = true;
 
@@ -496,7 +692,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -509,6 +707,7 @@ public class GUI extends JFrame
          b6.setFont(new Font("consolas", Font.BOLD, 30));
          b6.setForeground(Color.BLACK);
          count6++;
+
 
          buttonsPressed[5] = true;
 
@@ -544,7 +743,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -557,6 +758,7 @@ public class GUI extends JFrame
          b7.setFont(new Font("consolas", Font.BOLD, 30));
          b7.setForeground(Color.BLACK);
          count7++;
+
 
          buttonsPressed[6] = true;
 
@@ -592,7 +794,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -605,6 +809,7 @@ public class GUI extends JFrame
          b8.setFont(new Font("consolas", Font.BOLD, 30));
          b8.setForeground(Color.BLACK);
          count8++;
+
 
          buttonsPressed[7] = true;
 
@@ -640,7 +845,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -653,6 +860,7 @@ public class GUI extends JFrame
          b9.setFont(new Font("consolas", Font.BOLD, 30));
          b9.setForeground(Color.BLACK);
          count9++;
+
 
          buttonsPressed[8] = true;
 
@@ -688,7 +896,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -701,6 +911,8 @@ public class GUI extends JFrame
          b19.setFont(new Font("consolas", Font.BOLD, 30));
          b19.setForeground(Color.BLACK);
          count19++;
+
+
 
          buttonsPressed[18] = true;
 
@@ -737,7 +949,9 @@ public class GUI extends JFrame
             }
 
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -750,6 +964,7 @@ public class GUI extends JFrame
          b20.setFont(new Font("consolas", Font.BOLD, 30));
          b20.setForeground(Color.BLACK);
          count20++;
+
 
          buttonsPressed[19] = true;
 
@@ -785,7 +1000,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -798,6 +1015,7 @@ public class GUI extends JFrame
          b21.setFont(new Font("consolas", Font.BOLD, 30));
          b21.setForeground(Color.BLACK);
          count21++;
+
 
          buttonsPressed[20] = true;
 
@@ -833,7 +1051,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -881,7 +1101,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -929,7 +1151,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -977,7 +1201,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -1025,7 +1251,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -1073,7 +1301,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -1121,7 +1351,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -1170,7 +1402,9 @@ public class GUI extends JFrame
             }
 
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -1218,7 +1452,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -1266,7 +1502,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -1314,7 +1552,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -1362,7 +1602,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -1410,7 +1652,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -1458,7 +1702,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -1506,7 +1752,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
@@ -1554,7 +1802,9 @@ public class GUI extends JFrame
                JOptionPane.showMessageDialog(frame2,"The winner is Player " + numTurn);
             }
          }
-
+         if(hasAI && numTurn == 2){
+             aiPressButton();
+         }
       }
 
    }
