@@ -40,41 +40,41 @@ public void makeAI(){
  * if a player has won
  * @return if function ran successfully
  */
-public boolean hasWon(boolean[] board){
-        strArr = Array.asList(board);
-        if(
-                strArr[0] && strArr[1] && strArr[2] ||
-                strArr[3] && strArr[4] && strArr[5] ||
-                strArr[6] && strArr[7] && strArr[8] ||
-                strArr[0] && strArr[3] && strArr[6] ||
-                strArr[1] && strArr[4] && strArr[7] ||
-                strArr[2] && strArr[5] && strArr[8] ||
-                strArr[0] && strArr[4] && strArr[8] ||
-                strArr[2] && strArr[4] && strArr[6] ||
-
-                strArr.[9] && strArr.[10]) && strArr.[11]) ||
-                strArr.[12]) && strArr.[13]) && strArr.[14]) ||
-                strArr.[15]) && strArr.[16]) && strArr.[17]) ||
-                strArr.[9] && strArr.[12]) && strArr.[15]) ||
-                strArr.[10]) && strArr.[13]) && strArr.[16]) ||
-                strArr.[11]) && strArr.[14]) && strArr.[17]) ||
-                strArr.[0] && strArr.[13]) && strArr.[17]) ||
-                strArr.[11]) && strArr.[13]) && strArr.[15]) ||
-
-                strArr.[18] && strArr.[19] && strArr.[20] ||
-                strArr.[21] && strArr.[22] && strArr.[23] ||
-                strArr.[24] && strArr.[25] && strArr.[26] ||
-                strArr.[18] && strArr.[21] && strArr.[22] ||
-                strArr.[19] && strArr.[22] && strArr.[25] ||
-                strArr.[20] && strArr.[23] && strArr.[26] ||
-                strArr.[18] && strArr.[22] && strArr.[26] ||
-                strArr.[20] && strArr.[22] && strArr.[24] ||
-                ) {
-                return true;
-        }
-
-        return false;
-}
+// public boolean hasWon(boolean[] board){
+//         Boolean[] strArr = Arrays.asList(board);
+//         if(
+//                 strArr[0] && strArr[1] && strArr[2] ||
+//                 strArr[3] && strArr[4] && strArr[5] ||
+//                 strArr[6] && strArr[7] && strArr[8] ||
+//                 strArr[0] && strArr[3] && strArr[6] ||
+//                 strArr[1] && strArr[4] && strArr[7] ||
+//                 strArr[2] && strArr[5] && strArr[8] ||
+//                 strArr[0] && strArr[4] && strArr[8] ||
+//                 strArr[2] && strArr[4] && strArr[6] ||
+//
+//                 strArr[9] && strArr[10] && strArr[11] ||
+//                 strArr[12] && strArr[13] && strArr[14] ||
+//                 strArr[15] && strArr[16] && strArr[17] ||
+//                 strArr[9] && strArr[12] && strArr[15] ||
+//                 strArr[10] && strArr[13] && strArr[16] ||
+//                 strArr[11] && strArr[14] && strArr[17] ||
+//                 strArr[0] && strArr[13] && strArr[17] ||
+//                 strArr[11] && strArr[13] && strArr[15] ||
+//
+//                 strArr[18] && strArr[19] && strArr[20] ||
+//                 strArr[21] && strArr[22] && strArr[23] ||
+//                 strArr[24] && strArr[25] && strArr[26] ||
+//                 strArr[18] && strArr[21] && strArr[22] ||
+//                 strArr[19] && strArr[22] && strArr[25] ||
+//                 strArr[20] && strArr[23] && strArr[26] ||
+//                 strArr[18] && strArr[22] && strArr[26] ||
+//                 strArr[20] && strArr[22] && strArr[24]
+//                 ) {
+//                 return true;
+//         }
+//
+//         return false;
+// }
 
 /**
  * Saves game, writes board status to saveGame.txt as a String
@@ -83,8 +83,8 @@ public boolean hasWon(boolean[] board){
  */
 public boolean saveGame(boolean[] saveArray){
         String saveString = "";
-        for(item : saveArray) {
-                saveString += item + " ";
+        for(boolean item : saveArray) {
+                saveString += String.valueOf(item) + " ";
         }
         try{
                 PrintWriter writer = new PrintWriter("saveGame.txt", "UTF-8");
@@ -103,12 +103,13 @@ public boolean saveGame(boolean[] saveArray){
  * loads String from saveGame.txt
  * @return if function ran successfully
  */
-public String[] loadGame(){
-        result = String[26];
+public boolean loadGame(){
+        String[] result = new String[26];
         try{
                 Scanner in = new Scanner(new FileReader("saveGame.txt"));
                 while(in.hasNext()) {
-                        result.append(in.next());
+                        // result.append(in.next());
+                        in.next();
                 }
                 return true;
         }

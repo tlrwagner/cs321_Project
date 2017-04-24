@@ -1,5 +1,8 @@
 // This is a Misere Game of Tic Tac Toe
 import java.util.*;
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
 
 public class ThreeXT_main {
 public Game game;
@@ -19,15 +22,9 @@ public ThreeXT_main(){
         // }
 }
 
-/**
- * runs flow for game object
- * @return if function ran successfully
- */
-public boolean runGame(){
-        return true;
-}
 
 public static void main(String[] args) {
+    ThreeXT_main g = new ThreeXT_main();
 
 }
 }
