@@ -1,3 +1,7 @@
+package cs321;
+
+import java.util.Arrays;
+
 /**
  * This class encompasses the moves that the computer 
  * player will make. 
@@ -23,8 +27,6 @@
  * @version 1.0
  * @since 2017-04-11
  */
-
-import java.util.*;
 
 public class AI {
 
@@ -108,22 +110,27 @@ public class AI {
 			throw new RuntimeException("Boards are all Full.");
 		}
 		
+		
 		// scan through playable boards to determine which board has the most and the least X's respectively
+		boolean firstBoard = true;
 		for (int i = 0; i < deadBoards.length; i++){
 			int temp = 0;
 			// if the board is dead, there is no need to scan it 
 			if(deadBoards[i] != 1){
+				
 				// count up the amount of X's on ith board
 				for(int j = 0; j < 8; j++){
 					//determine which board has most and least X's
 					temp += board[j+(i*9)];
 				}
+				
 				// initialize first non-dead board
-				if(i==0){
+				if(firstBoard){
 					this.easyBoardCount = temp;
 					this.easyBoard = i;
 					this.hardBoard = i;
 					this.hardBoardCount = temp;
+					firstBoard = false;
 				}
 				// focuses on board with least amount of elements
 				if(temp <= this.easyBoardCount){
@@ -173,7 +180,7 @@ public class AI {
 		int result = 0;
 		// check available boards
 		whichBoardToMakeMove(board);
-		// first move for AI, if neccessary 
+		// first move for AI, if necessary 
 		if(this.hardBoardCount == 0){
 			result = (this.hardBoard * 9) + 4;
 		}
@@ -282,7 +289,7 @@ public class AI {
 	
 	/**
 	 * Actually updates the board by placing a 1 where we want an X to go.
-	 * This ultimatley will represent an X on the board.
+	 * This ultimately will represent an X on the board.
 	 * @param board array representation of the 3-X-T board
 	 * @return int[] newly updated board with correct move made
 	 */
